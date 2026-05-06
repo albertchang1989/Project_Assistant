@@ -1,0 +1,15 @@
+[Unit]
+Description=DingTalk AI Work Assistant
+After=network.target
+
+[Service]
+User=workassistant
+Group=workassistant
+WorkingDirectory=/opt/work-assistant
+EnvironmentFile=/opt/work-assistant/.env
+ExecStart=/opt/work-assistant/.venv/bin/uvicorn work_assistant.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
